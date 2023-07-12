@@ -1,0 +1,2 @@
+# safescript
+Safe Script
