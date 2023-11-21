@@ -1,0 +1,12 @@
+{
+    "imports": {
+        "$core": "./libs/core/types/core.safe.ts",
+        "$core/eh": "./libs/core/types/eh/eh.safe.ts",
+        "$core/ops": "./libs/core/types/ops/ops.safe.ts",
+
+        "@core": "./libs/core/core.ss"
+    },
+    "tasks": {
+        "run": "deno run -A --unstable libs/runner/runner.ts"
+    }
+}
