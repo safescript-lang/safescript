@@ -6,7 +6,35 @@
 
         "@core": "./libs/core/core.ss"
     },
+    
     "tasks": {
-        "run": "deno run -A --unstable libs/runner/runner.ts"
+        "build": "deno run -A --unstable ./libs/cli/build.ts",
+        "run": "deno run -A --unstable ./libs/cli/run.ts"
+    },
+
+    "lock": "./target/deno.lock",
+
+    "compilerOptions": {
+        "allowJs": true,
+        "checkJs": false,
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strictBindCallApply": true,
+        "strictPropertyInitialization": true,
+        "noImplicitThis": true,
+        "useUnknownInCatchVariables": true,
+        "alwaysStrict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "exactOptionalPropertyTypes": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUncheckedIndexedAccess": true,
+        "noImplicitOverride": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "allowUnusedLabels": false,
+        "allowUnreachableCode": false
     }
 }

@@ -39,36 +39,47 @@ export namespace SafeNumber {
         ): string {
             return this.value.toLocaleString(locales, options);
         }
+        // @ops.Add._
         add(other: SafeNumber): SafeNumber {
             return SafeNumber.from(this.value + other.valueOf());
         }
+        // @ops.AddAssign._
         addAssign(other: SafeNumber): void {
             this.value += other.valueOf();
         }
+        // @ops.Sub._
         sub(other: SafeNumber): SafeNumber {
             return SafeNumber.from(this.value - other.valueOf());
         }
+        // @ops.SubAssign._
         subAssign(other: SafeNumber): void {
             this.value -= other.valueOf();
         }
+        // @ops.Mul._
         mul(other: SafeNumber): SafeNumber {
             return SafeNumber.from(this.value * other.valueOf());
         }
+        // @ops.MulAssign._
         mulAssign(other: SafeNumber): void {
             this.value *= other.valueOf();
         }
+        // @ops.Div._
         div(other: SafeNumber): SafeNumber {
             return SafeNumber.from(this.value / other.valueOf());
         }
+        // @ops.DivAssign._
         divAssign(other: SafeNumber): void {
             this.value /= other.valueOf();
         }
+        // @ops.Rem._
         rem(other: SafeNumber): SafeNumber {
             return SafeNumber.from(this.value % other.valueOf());
         }
+        // @ops.RemAssign._
         remAssign(other: SafeNumber): void {
             this.value %= other.valueOf();
         }
+        // @ops.Neg._
         neg(): SafeNumber {
             return SafeNumber.from(-this.value);
         }

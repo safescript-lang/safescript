@@ -1,8 +1,9 @@
-import { Match, MatchPattern } from "$core/ops";
+import { OptionMatchPattern } from "$core/ops";
 import { UnwrapException } from "$core/eh";
+import { Match } from "$core/ops";
 
 /**
- *  *  Optional values.
+ *  Optional values.
  * 
  *  Type {@link Option} represents an optional value: every {@link Option}
  *  is either {@link Option.Some Some} and contains a value, or {@link Option.None None}, and
@@ -23,30 +24,25 @@ import { UnwrapException } from "$core/eh";
  *  {@link Option}s are commonly paired with pattern matching to query the presence
  *  of a value and take action, always accounting for the {@link Option.None None} case.
  * 
+ * ## Example
+ * 
  *  ```ts
  *  function divide(numerator: SafeNumber, denominator: SafeNumber): Option<SafeNumber> {
  *      if denominator == 0 {
  *          Option.None
  *      } else {
- *          Option.Some(numerator / denominator)
+ *          Option.Some(numerator.div(denominator))
  *      }
  *  }
  * 
  *  // The return value of the function is an option
  *  let result = divide(2, 3);
  * 
+ *  // Pattern match to retrieve the value
  *  result.match({
  *     Some: (x) => println!("Result: {x}"),
  *     None: println!("Cannot divide by 0"),
  *  });
- * 
- *  // Pattern match to retrieve the value
- *  match result {
- *      // The division was valid
- *      Some(x) => println!("Result: {x}"),
- *      // The division was invalid
- *      None    => println!("Cannot divide by 0"),
- *  }
  *  ```
 */
 export interface Option<T> extends Match<OptionMatchPattern<T>> {
@@ -80,17 +76,18 @@ export interface Option<T> extends Match<OptionMatchPattern<T>> {
     unwrapOrElse(defaultValue: () => T): T;
 }
 
-interface OptionMatchPattern<T> extends MatchPattern {
-    Some: (value: T) => void;
-    None: () => void;
-}
-
 //deno-lint-ignore no-namespace
 export namespace Option {
     class Impl<T> implements Option<T> {
         constructor(private readonly value?: T | undefined) {}
         match(pattern: OptionMatchPattern<T>): void {
-            return this.isSome() ? pattern.Some(this.value as T) : pattern.None();
+            if (this.isSome()) {
+                if (pattern.Some) pattern.Some(this.value as T);
+                else pattern._!(this.value);
+            } else {
+                if (pattern.None) pattern.None();
+                else pattern._!();
+            }
         }
         isSome(): boolean {
             return this.value !== undefined;
@@ -98,8 +95,8 @@ export namespace Option {
         isNone(): boolean {
             return !this.isSome();
         }
-        unwrap(): T {
-            if (this.isNone()) throw new UnwrapException("Cannot unwrap a None value");
+        unwrap(): T | never {
+            if (this.isNone()) UnwrapException.raise("Cannot unwrap a None value");
             return this.value as T;
         }
         unwrapOr(defaultValue: T): T {
@@ -119,13 +116,11 @@ export namespace Option {
         return new Impl(value);
     }
 
-    //deno-lint-ignore no-explicit-any
-    export const None: Option<any> = new Impl();
+    /**
+     * Constructs a new {@link Option} with a None value.
+     * 
+     * @returns {Option<T>} a new {@link Option} with a None value
+     * @template T the type of the value
+    */
+    export function None<T>(): Option<T> { return new Impl(); }
 }
-
-const __test: Option<string> = Option.Some("test");
-
-__test.match({
-    Some: (value) => console.log(value),
-    None: () => console.log("None")
-})
