@@ -64,7 +64,7 @@ declare global {
              * @private
              * @internal
             */
-            export function __invoke__(f: () => Result<Void, Error>): Void;
+            export function __invoke__(f: () => Result<Void, __Any__>): Void;
         }
     }
 }

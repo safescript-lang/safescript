@@ -1,0 +1,19 @@
+[workspace]
+resolver = "2"
+members = [
+    "libs/core"
+]
+
+[workspace.package]
+authors = [
+    "Матвей Т <https://matveit.dev> AtomicGamer9523@github"
+]
+# Github Repository
+repository = "https://github.com/safescript-lang/safescript"
+# Rust edition (keep it 2021)
+edition = "2021"
+# License of the entire workspace
+license = "MIT"
+
+# Version of the entire workspace
+version = "0.0.1-dev"

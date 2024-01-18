@@ -1,2 +1,6 @@
 target
 *.lock
+
+# Added by cargo
+
+/target
