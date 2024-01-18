@@ -1,10 +1,6 @@
 {
     "imports": {
-        "$core": "./libs/core/types/core.safe.ts",
-        "$core/eh": "./libs/core/types/eh/eh.safe.ts",
-        "$core/ops": "./libs/core/types/ops/ops.safe.ts",
-
-        "@core": "./libs/core/core.ss"
+        "ss:core": "./libs/core/lib.d.ts"
     },
     
     "tasks": {
@@ -35,6 +31,9 @@
         "noImplicitOverride": true,
         "noPropertyAccessFromIndexSignature": true,
         "allowUnusedLabels": false,
-        "allowUnreachableCode": false
+        "allowUnreachableCode": false,
+        "types": [
+            "./libs/core/lib.d.ts"
+        ]
     }
 }
