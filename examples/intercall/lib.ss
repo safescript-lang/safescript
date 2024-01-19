@@ -7,15 +7,13 @@ class Person {
     }
 }
 
-function main(): Result<Void, Error> {
+function main(): Result<Void, Void> {
     const item = SSON.parse('{"name": "test"}');
     const name = item.get("name").$;
 
     const person = new Person(name, 10);
 
-    console.log(person);
+    log(person)
 
     return Result.Ok(Void);
 }
-
-__safescript_internals__.__runtime__.__invoke__(main);

@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         /* Basic Options */
-        // "noLib": true,
+        "noLib": true,
         "module": "commonjs",
         "rootDir": "./libs",
         "baseUrl": "./",
@@ -11,7 +11,7 @@
         "allowJs": true,
         "checkJs": false,
         "types": [
-            "./libs/core/lib.d.ts"
+            "./libs/core/lib.safescript.d.ts"
         ],
 
         /* Type Checking */

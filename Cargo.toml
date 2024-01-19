@@ -1,7 +1,10 @@
 [workspace]
 resolver = "2"
 members = [
-    "libs/core"
+    "examples/intercall",
+
+    "libs/core",
+    "libs/cli",
 ]
 
 [workspace.package]

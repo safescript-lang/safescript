@@ -336,4 +336,6 @@ declare global {
     }
     export type Void = void;
     export const Void: Void;
+
+    export function log(...args: __safescript_internals__.__Any__[]): void;
 }

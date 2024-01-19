@@ -33,7 +33,7 @@
         "allowUnusedLabels": false,
         "allowUnreachableCode": false,
         "types": [
-            "./libs/core/lib.d.ts"
+            "./libs/core/lib.safescript.d.ts"
         ]
     }
 }

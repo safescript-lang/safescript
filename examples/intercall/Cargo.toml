@@ -1,0 +1,16 @@
+[package]
+name = "intercall-example"
+description = "An example of calling between rust and SafeScript"
+version.workspace = true
+authors.workspace = true
+repository.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies.safescript]
+path = "../../libs/core"
+features = []
+
+[[bin]]
+name = "intercall-example"
+path = "main.rs"

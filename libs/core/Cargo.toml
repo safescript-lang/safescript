@@ -9,3 +9,14 @@ license.workspace = true
 
 [lib]
 path = "lib.rs"
+
+[dependencies.parser]
+package = "safescript-parser"
+path = "../../../ss_core/parser"
+
+[features]
+default = ["interpreter"]
+
+interpreter = []
+compiler = []
+transformer = []
