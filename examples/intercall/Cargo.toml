@@ -9,7 +9,7 @@ license.workspace = true
 
 [dependencies.safescript]
 path = "../../libs/core"
-features = []
+features = ["vm"]
 
 [[bin]]
 name = "intercall-example"

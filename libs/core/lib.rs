@@ -1,12 +1,11 @@
-#[cfg(not(any(
-    all(feature = "interpreter", not(feature = "compiler"), not(feature = "transformer")),
-    all(not(feature = "interpreter"), feature = "compiler", not(feature = "transformer")),
-    all(not(feature = "interpreter"), not(feature = "compiler"), feature = "transformer"),
-)))]
-compile_error!("Exactly one of the following features must be enabled: interpreter, compiler, transformer");
+#[cfg(feature = "vm")]
+pub use vm;
 
-// interpreter = []
-// compiler = []
-// transformer = []
+#[cfg(feature = "compiler")]
+pub use compiler;
 
-pub mod runtime;
+#[cfg(feature = "transformer")]
+pub use transformer;
+
+#[cfg(feature = "common")]
+pub use common::*;

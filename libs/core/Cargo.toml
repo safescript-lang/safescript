@@ -10,13 +10,30 @@ license.workspace = true
 [lib]
 path = "lib.rs"
 
-[dependencies.parser]
-package = "safescript-parser"
-path = "../../../ss_core/parser"
+[dependencies.common]
+package = "safescript-common"
+path = "../../../ss_core/common"
+optional = true
+
+[dependencies.transformer]
+package = "safescript-transformer"
+path = "../../../ss_core/transformer"
+optional = true
+
+[dependencies.compiler]
+package = "safescript-compiler"
+path = "../../../ss_core/compiler"
+optional = true
+
+[dependencies.vm]
+package = "safescript-vm"
+path = "../../../ss_core/vm"
+optional = true
 
 [features]
-default = ["interpreter"]
+default = ["common"]
 
-interpreter = []
-compiler = []
-transformer = []
+common = ["dep:common"]
+transformer = ["dep:transformer"]
+compiler = ["dep:compiler"]
+vm = ["dep:vm"]

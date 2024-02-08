@@ -6,9 +6,11 @@ authors.workspace = true
 repository.workspace = true
 edition.workspace = true
 license.workspace = true
+# Run this binary by default when using `cargo run`
+default-run = "sensei"
 
 [[bin]]
-name = "ss"
+name = "sensei"
 path = "main.rs"
 
 [dependencies.safescript]
